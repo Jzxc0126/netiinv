@@ -54,7 +54,7 @@
 
                         </div>
                         <div class="col-md-4 mb-2">
-                        <button type="button" data-toggle="modal" data-target="#deletedcatmodal" class="btn btn-warning" >Deleted Category</button>
+                        <button type="button" data-toggle="modal" data-target="#deletedcatmodal" class="btn btn-danger" >Deleted Category</button>
                         </div>
 
                      </div>
@@ -112,7 +112,7 @@
 <div class="modal fade" id="deletedcatmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document" >
     <div class="modal-content" style="width: 800px;">
-      <div class="modal-header bg-primary">
+      <div class="modal-header bg-danger">
         <h5 class="modal-title text-white" id="exampleModalLongTitle">Deleted Category</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -120,7 +120,7 @@
       </div>
       <div class="modal-body" >
       <table id="tbldeletedcat" class="table table-bordered border-primary table-hover text-center" style="width:100%;">
-                         <thead class="bg-primary border-primary">
+                         <thead class="bg-danger border-primary">
                                  <tr>
                                      
                                      <th>Category ID</th>

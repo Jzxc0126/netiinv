@@ -90,8 +90,8 @@ $(document).ready(function () {
 $(document).ready(function() {
     $('#tbldeletedcat').DataTable( {
         dom: 'Bfrtip',
-        "scrollY": 200 ,
-        "scrollX": true,
+        
+       
         buttons: [
             'copy',
             'excel',
