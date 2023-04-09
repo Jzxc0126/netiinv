@@ -48,20 +48,16 @@
                     <!--add cat form end-->
 
                     <div class="mt-3 col-md-9 table-responsive" style="overflow-y:auto;max-height:650px;">
-                        <!-- <div class="row">
-                            <div class="col-md-4">
-                                <label class="label">Department Filter</label>
-                                <select class="form-control mb-2" name="fltrselectdepartment" id="fltrselectdepartment">
-                                    <option disabled="" value="" selected="">Select Department</option>
-                                    <?php populatedepartment(); ?>
-                                </select>
-                            </div>
-                            <div class="col-md-8">
+                       
+                        <div class="row">
+                        <div class="col-md-8 ">
 
-                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                        <button type="button" data-toggle="modal" data-target="#deletedcatmodal" class="btn btn-warning" >Deleted Category</button>
+                        </div>
 
-                        </div> -->
-
+                     </div>
                         <table id="example" class="table table-bordered border-primary table-hover text-center display" style="width:100%;">
                             <thead class="bg-primary border-primary">
                                 <tr>
@@ -105,14 +101,49 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="updatedept" >Save changes</button>
+        <button type="submit" class="btn btn-primary" name="updatecategory" >Save changes</button>
       </div>
       </form>
     </div>
   </div>
 </div>
 <!-- End Edit category Modal -->
-
+<!-- Deleted Category Modal -->
+<div class="modal fade" id="deletedcatmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered" role="document" >
+    <div class="modal-content" style="width: 800px;">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-white" id="exampleModalLongTitle">Deleted Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+      <table id="tbldeletedcat" class="table table-bordered border-primary table-hover text-center" style="width:100%;">
+                         <thead class="bg-primary border-primary">
+                                 <tr>
+                                     
+                                     <th>Category ID</th>
+                                     <th>Category</th>
+                                     <?php if ($userlevelid == 1) {
+                                        echo "<th>Department</th>";
+                                    } ?>
+                                     <th>Action</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <?php populatedeletecategorytable($userlevelid, $userdeptid); ?>
+                             </tbody>
+                         </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Deleted category Modal -->
 
 
     <!--Content End-->

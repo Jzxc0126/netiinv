@@ -85,4 +85,19 @@ $(document).ready(function () {
       },
   });
 });
-  
+
+//deletedcatgorytable
+$(document).ready(function() {
+    $('#tbldeletedcat').DataTable( {
+        dom: 'Bfrtip',
+        "scrollY": 200 ,
+        "scrollX": true,
+        buttons: [
+            'copy',
+            'excel',
+            'csv',
+            'pdfHtml5',
+            'print'
+        ]
+    } );
+} );
