@@ -97,8 +97,19 @@ function populatedeletecategorytable($userlevelid , $userdeptid)
       try
       {
         include '../includes/dbcon.php';
-        $statement = $conn->prepare("Select a.categoryid,a.category,a.cat_deleted,b.department from category_tbl as a
+        if($userlevelid == 2)
+        {
+          $statement = $conn->prepare("Select a.categoryid,a.category,a.cat_deleted,b.department from category_tbl as a
+          inner join department_tbl as b on a.departmentid=b.departmentid where a.cat_deleted= 0 and a.departmentid = ".$userdeptid." ");
+        }
+        else if($userlevelid == 1 || $userlevelid == 3)
+        {
+          $statement = $conn->prepare("Select a.categoryid,a.category,a.cat_deleted,b.department from category_tbl as a
         inner join department_tbl as b on a.departmentid=b.departmentid where a.cat_deleted= 0 ");
+        }
+
+
+        
         $statement->execute();
         $result = $statement->get_result();
               while($row = $result->fetch_assoc())

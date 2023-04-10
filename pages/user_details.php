@@ -39,7 +39,7 @@ $u_ids = $_GET['ids'];
     <div class="row">
       <div class=col-md-12 style="margin-left: 20px;">
       <a href="users.php?" type="button" class="btn btn-primary bg-gradient-primary"><i class="fa-solid fa-arrow-left"></i> Back</a>
-      <a href="user_edit_details.php?ids=' <?php echo $u_ids; ?> '" type="button" class="btn btn-primary bg-gradient-warning"><i class="fas fa-fw fa-edit"></i>Edit</a>
+      <a href="user_edit_details.php?ids=<?php echo $u_ids;?>" type="button" class="btn btn-primary bg-gradient-warning"><i class="fas fa-fw fa-edit"></i>Edit</a>
       </div>
       
     </div>

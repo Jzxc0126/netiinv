@@ -46,6 +46,7 @@
 
                                                         while ($row = mysqli_fetch_assoc($result)) {
                                                                 $active = $row["u_status"];
+                                                                $adminacc = $row["u_ids"];
                                                                 
 
 
@@ -55,42 +56,53 @@
                                                                 echo '<td>' . $row['u_username'] . '</td>';
                                                                 
                                                                 echo '<td>' . $row['department'] . '</td>';
-                                                                echo '<td align="center"> <div class="btn-group">';
+                                                               
+                                                                if ($adminacc != 1)
+                                                                {
+                                                                        echo '<td align="center"> <div class="btn-group">';
+                                                                        if ($active == 1) {
+                                                                                echo "<a class='btn btn-danger btn-sm' href='userssetinactive.php?userid=" . $row["u_ids"] . "' style='color:white;'>
+                                                                               <i class='fa-sharp fa-regular fa-circle-xmark'></i> Set In-active
+                                        </a>";
+                                                                        } else {
+                                                                                echo "<a class='btn btn-success btn-sm' href='userssetactive.php?userid=" . $row["u_ids"] . "' style='color:white;'>
+                                                                        <i class='fa-regular fa-circle-check'></i> Set Active
+                                        </a>";
+                                                                        }
+                                                                        echo '
+                                                                        <a type="button" class="view-user btn btn-primary bg-gradient-primary" href="user_details.php?ids=' . $row['u_ids'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
+                                                                      <div class="btn-group">
+                                                                        <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">
+                                                                        ... <span class="caret"></span></a>
+                                                                      <ul class="dropdown-menu text-center" role="menu">
+                                                                          <li>
+                                                                            <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 10px;" href="user_edit_details.php?ids=' . $row['u_ids'] . '">
+                                                                              <i class="fas fa-fw fa-edit"></i> Edit
+                                                                            </a>
+                                                                          </li>
+                                                                          
+                                                                          <li>
+                                                                          <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="user_resetpass.php?ids=' . $row['u_ids'] . '">
+                                                                          <i class="fa-solid fa-lock fa-2xs"></i> Reset Password
+                                                                          </a>
+                                                                        </li>
+                                                                      </ul>
+                                                                      </div>
+                                                                    </div></td>';
+                                                                                                          echo '</tr> ';
 
-                                                                if ($active == 1) {
-                                                                        echo "<a class='btn btn-danger btn-sm' href='userssetinactive.php?userid=" . $row["u_ids"] . "' style='color:white;'>
-                                                                       <i class='fa-sharp fa-regular fa-circle-xmark'></i> Set In-active
-                                </a>";
-                                                                } else {
-                                                                        echo "<a class='btn btn-success btn-sm' href='userssetactive.php?userid=" . $row["u_ids"] . "' style='color:white;'>
-                                                                <i class='fa-regular fa-circle-check'></i> Set Active
-                                </a>";
+
                                                                 }
+                                                                else
+                                                                {
+                                                                        echo '<td align="center" class="bg-secondary">Cannot Change Admin Account </td>';   
+                                                                }
+                                                               
 
 
 
 
-                                                                echo '
-                              <a type="button" class="view-user btn btn-primary bg-gradient-primary" href="user_details.php?ids=' . $row['u_ids'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
-                            <div class="btn-group">
-                              <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">
-                              ... <span class="caret"></span></a>
-                            <ul class="dropdown-menu text-center" role="menu">
-                                <li>
-                                  <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 10px;" href="user_edit_details.php?ids=' . $row['u_ids'] . '">
-                                    <i class="fas fa-fw fa-edit"></i> Edit
-                                  </a>
-                                </li>
-                                
-                                <li>
-                                <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="user_resetpass.php?ids=' . $row['u_ids'] . '">
-                                <i class="fa-solid fa-lock fa-2xs"></i> Reset Password
-                                </a>
-                              </li>
-                            </ul>
-                            </div>
-                          </div></td>';
-                                                                echo '</tr> ';
+                                                              
                                                         }
                                                         ?>
                                                 </tbody>
