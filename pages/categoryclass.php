@@ -5,7 +5,7 @@ function addcategory($category , $deptid)
   try
   {
     include '../includes/dbcon.php';
-    $statement = $conn->prepare("insert into category_tbl(categoryid,category,departmentid,cat_deleted) values(NULL,?,?,1)");
+    $statement = $conn->prepare("INSERT into category_tbl(categoryid,category,departmentid,cat_deleted) values(NULL,?,?,1)");
     $statement->bind_param("si", $Category , $Deptid);
     $Category = $category;
     $Deptid = $deptid;

@@ -53,7 +53,7 @@
                         <div class="col-md-8 ">
 
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-4 mb-2 d-flex justify-content-end">
                         <button type="button" data-toggle="modal" data-target="#deletedcatmodal" class="btn btn-danger" >Deleted Category</button>
                         </div>
 
@@ -170,7 +170,8 @@ if (isset($_POST["btnaddcategory"])) {
         $deptid = $_POST["selectdepartment"];
     }
     if ($deptid == "") {
-        echo "<script>alert('Please Select Category'); </script>";
+        echo "<script>alert('Please Select Department'); </script>";
+        echo "<script> window.location.replace('category.php'); </script>";
     } else {
         addcategory($category, $deptid);
     }

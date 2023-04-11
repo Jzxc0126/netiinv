@@ -43,7 +43,7 @@
                         <div class="col-md-8 ">
 
                         </div>
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-4 mb-2 d-flex justify-content-end">
                         <button type="button" data-toggle="modal" data-target="#deleteddptmodal" class="btn btn-warning" >Deleted Department</button>
                         </div>
 

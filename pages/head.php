@@ -29,6 +29,33 @@
 <script src="../sbadmintemplate2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../sbadmintemplate2/js/demo/datatables-demo.js"></script>
 <!-- Bootstrap End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style type="text/css">
 table,th,td{
         color:black;
