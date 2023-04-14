@@ -124,7 +124,7 @@ background-size: cover;
                         <a class="dropdown-item text-dark" id="menulocation" onclick="urltolocation();"><i class="fas fa-map-marker-alt"></i> Location</a>
                         <a class="dropdown-item text-dark" id="menusupplier" onclick="urltosupplier();"> <i class="fa-sharp fa-solid fa-boxes-packing"></i> Supplier</a>
                     
-                        <a class="dropdown-item text-dark" id="menuassigneduser" onclick="urltoassigneduser();"><i class="fas fa-user-tag"></i> Assigned User</a>
+                        <!-- <a class="dropdown-item text-dark" id="menuassigneduser" onclick="urltoassigneduser();"><i class="fas fa-user-tag"></i> Assigned User</a> -->
                        
                         <a class='dropdown-item text-dark' id="menuunit" onclick='urltounit();'><i class="fas fa-weight"></i> Unit</a>
                     </div>

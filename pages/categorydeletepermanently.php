@@ -5,7 +5,7 @@ try
 {
     include '../includes/dbcon.php';
 
-    $query = "UPDATE category_tbl SET cat_deleted = '3' where categoryid = '$categoryid' ";
+    $query = "UPDATE category_tbl SET cat_deleted = '2' where categoryid = '$categoryid' ";
     $query_run = mysqli_query($conn, $query);
 
 
