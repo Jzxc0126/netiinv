@@ -118,7 +118,7 @@ background-size: cover;
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="dropdown-item text-dark" id="menuassetusage" onclick="urltoassetusage();"><i class="fas fa-warehouse"></i> Asset Usage</a>
+                        <!-- <a class="dropdown-item text-dark" id="menuassetusage" onclick="urltoassetusage();"><i class="fas fa-warehouse"></i> Asset Usage</a> -->
                         <a class="dropdown-item text-dark" id="menucategory" onclick="urltocategory();"><i class="fa-solid fa-list-ul"></i> Category</a>
                         <a class='dropdown-item text-dark' id="menudepartment" onclick="urltodepartment();"><i class="fas fa-building"></i> Department</a>
                         <a class="dropdown-item text-dark" id="menulocation" onclick="urltolocation();"><i class="fas fa-map-marker-alt"></i> Location</a>

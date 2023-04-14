@@ -116,7 +116,7 @@ function populatedeletecategorytable($userlevelid , $userdeptid)
               {
                     echo "<tr>";
                     
-                    echo "<td class='dep_id'>".$row["categoryid"]."</td>";
+                    echo "<td class='cat_id'>".$row["categoryid"]."</td>";
                     echo "<td>".$row["category"]."</td>";
                     if($userlevelid == 1)
               {
@@ -127,7 +127,7 @@ function populatedeletecategorytable($userlevelid , $userdeptid)
                           <a class='btn btn-Success btn-sm mb-1' href='categorydeleterecover.php?id=".$row["categoryid"]."' style='color:white;'>
                           Recover
                           </a>
-                          <a class='btn btn-danger btn-sm ' href='categorydeletepermanently.php?id=".$row["categoryid"]."' style='color:white;'>
+                          <a class='btn btn-danger btn-sm ' onclick='return checkdelete()' href='categorydeletepermanently.php?id=".$row["categoryid"]."' style='color:white;'>
                           Delete Permanently
                           </a>
 

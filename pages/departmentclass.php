@@ -45,7 +45,7 @@ function populatedepartmenttable()
                     echo "<td class='dep_id'>".$row["departmentid"]."</td>";
                     echo "<td>".$row["department"]."</td>";
                     echo "<td>
-                          <a class='btn btn-Success btn-sm mb-1' href='departmentdeleterecover.php?id=".$row["departmentid"]."' style='color:white;'>
+                          <a class='btn btn-success btn-sm mb-1' href='departmentdeleterecover.php?id=".$row["departmentid"]."' style='color:white;'>
                           Recover
                           </a>
                           <a class='btn btn-danger btn-sm ' href='departmentdeletepermanently.php?id=".$row["departmentid"]."' style='color:white;'>

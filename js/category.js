@@ -101,3 +101,18 @@ $(document).ready(function() {
         ]
     } );
 } );
+//deletedunittable
+$(document).ready(function() {
+    $('#tbldeletedunit').DataTable( {
+        dom: 'Bfrtip',
+        
+       
+        buttons: [
+            'copy',
+            'excel',
+            'csv',
+            'pdfHtml5',
+            'print'
+        ]
+    } );
+} );
