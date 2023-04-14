@@ -45,6 +45,26 @@ function populatedepartment()
   }
 
 }
+function populatedepartment1()
+{
+  try
+  {
+    include '../includes/dbcon.php';
+          $statement = $conn->prepare("Select * from department_tbl where dept_deleted = 1");
+          $statement->execute();
+          $result = $statement->get_result();
+                  while($row = $result->fetch_assoc())
+                  {
+                    echo "<option value=".$row["departmentid"].">".$row["department"]."</option>";
+                  }
+          $conn->close();
+  }
+  catch (\Exception $e)
+  {
+
+  }
+
+}
 function populatetblsupplier($userlevelid , $userdeptid)
 {
   try
@@ -85,7 +105,7 @@ function populatetblsupplier($userlevelid , $userdeptid)
               <a class='btn btn-secondary btn-sm edit_btn' style='color:white;'>
               Edit
               </a>
-              <a class='btn btn-danger btn-sm mt-1 ' onclick='return checkdelete()' href='categorydelete.php?id=".$row["supplierid"]."' style='color:white;'>
+              <a class='btn btn-danger btn-sm mt-1 ' onclick='return checkdelete()' href='supplierdelete.php?id=".$row["supplierid"]."' style='color:white;'>
               Delete
               </a>
               
@@ -142,7 +162,7 @@ function populatedeletesupptable($userlevelid , $userdeptid)
                 <a class='btn btn-success btn-sm mb-1' href='supplierdeleterecover.php?id=".$row["supplierid"]."' style='color:white;'>
                 Recover
                 </a>
-                <a class='btn btn-danger btn-sm ' href='supplierdeletepermanently.php?id=".$row["supplierid"]."' style='color:white;'>
+                <a class='btn btn-danger btn-sm ' onclick='return checkdelete()' href='supplierdeletepermanently.php?id=".$row["supplierid"]."' style='color:white;'>
                 Delete Permanently
                 </a>
 
@@ -157,9 +177,10 @@ function populatedeletesupptable($userlevelid , $userdeptid)
     }
 
 
-
-
-
-
-
 ?>
+  <script>
+           function checkdelete()
+           {
+            return confirm('Are you sure you want to delete this Supplier ?')
+           }
+        </script>

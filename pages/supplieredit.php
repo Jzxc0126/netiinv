@@ -1,5 +1,11 @@
 <?php 
 session_start();
+$userid = $_SESSION["userid"];
+$userfullname = $_SESSION["name"];
+$userdeptid = $_SESSION["departmentid"];
+$userdepartment = $_SESSION["department"];
+$userlevelid = $_SESSION["userlevelid"];
+$userlevel = $_SESSION["userlevel"];
 include '../includes/dbcon.php';
 if(isset($_POST['updatesupp'])){
     
@@ -9,10 +15,18 @@ if(isset($_POST['updatesupp'])){
     $suppcontact = $_POST['suppliercon'];
     $suppconperson = $_POST['contactperson'];
     $suppaddress = $_POST['supplieraddress'];
-    // $deptid = $_POST['editselectdepartment'];
-    // departmentid = '$deptid',
-    $query = "UPDATE supplier_tbl SET supp_name = '$suppname', supp_number = '$suppcontact',supp_contactperson = '$suppconperson',
-    	supp_address = '$suppaddress' where supplierid = '$supp_id' ";
+    if ($userlevelid == 2) {
+        $deptid = $userdeptid;
+    } else if ($userlevelid == 1) {
+        $deptid = $_POST['editselectdepartment'];
+    }
+    if ($deptid == "") {
+        echo "<script>alert('Please Select Department'); </script>";
+        echo "<script> window.location.replace('supplier.php'); </script>";
+    }
+    else{
+        $query = "UPDATE supplier_tbl SET supp_name = '$suppname', supp_number = '$suppcontact',supp_contactperson = '$suppconperson',
+    	supp_address = '$suppaddress' , departmentid = '$deptid' where supplierid = '$supp_id' ";
     $query_run = mysqli_query($conn, $query);
 
 
@@ -25,6 +39,8 @@ if(isset($_POST['updatesupp'])){
     {
         echo "<script> alert('Supplier Update not Succesful'); </script>";
     }
+    }
+    
 
 }
 ?>

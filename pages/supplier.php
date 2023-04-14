@@ -119,10 +119,10 @@
                             <label class="label">Supplier Address</label>
                                         <textarea class="form-control" type="text" name="supplieraddress" id="supplieraddress" value="" required></textarea>
                             
-                            <!-- <label class="label" id="editlabeldepartment">Department</label>
-                            <select class="form-control" name="editselectdepartment " id="editselectdepartment " required>
-                                            <?php populatedepartment(); ?>
-                                        </select> -->
+                           <label class="label" id="editlabeldepartment">Department</label>
+                            <select class="form-control" name="editselectdepartment" id="editselectdepartment">
+                                            <?php populatedepartment1(); ?>
+                                        </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -189,6 +189,8 @@ if ($userlevelid == 2) {
     echo "<script>
         document.getElementById('labelsupplier').style.display = 'none';
         document.getElementById('selectdepartment').style.display = 'none';
+        document.getElementById('editlabeldepartment').style.display = 'none';
+        document.getElementById('editselectdepartment').style.display = 'none';
         </script>";
 }
 if (isset($_POST["btnaddsupplier"])) {
@@ -239,7 +241,7 @@ if (isset($_POST["btnaddsupplier"])) {
             $('#suppliercon').val(data[2]);
             $('#contactperson').val(data[3]);
             $('#supplieraddress').val(data[4]);
-            // $('#editselectdepartment').val(data[5]);
+            $('#editselectdepartment').val(data[5]);
 
         });
 
