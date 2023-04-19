@@ -1,11 +1,16 @@
 <style>
 .footer
 {
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
     text-align: center;
     font-family: 'Calibri';
     background-color: #f1f2f6;
     color: #2f3542;
     height: 60px;
+   
     
 }
 </style>

@@ -90,25 +90,24 @@
         <h1><?php echo $dashlabel . " "; ?>Inventory</h1>
     </div>
     <div class="row container-fluid">
-        <div class=col-md-2>
+        <div class="col<?php if($userlevelid == 1){echo"-md-2";}else {echo"";} ?>">
+        <!-- -->
+            <div class="row ml-1 mt-5">
+                   
+              
 
+            </div>
             <div class="row ml-1">
-
-                <h1>Department</h1>
-
-            </div>
-            <div class="col">
-                <!-- admin -->
-                <div class="btn-group-vertical mt-5" role="group" name="depbtndpt" id="depbtndpt">
+            <div class="btn-group-vertical" role="group" name="depbtndpt" id="depbtndpt">
                     <?php populatedepartmentbuttons(); ?></div>
-                <!-- user -->
             </div>
-
+          
 
 
         </div>
-        <div class="col-md-10">
-            <h1 id="dptlabel"><?php echo "" . $userdeptid . " "; ?>Inventory</h1><button type="button" form="none" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <div class="col-md-<?php if($userlevelid == 1){echo"10";}else {echo"12";}?>">
+            <!-- <h1 id="dptlabel" name="dptlabel"><?php echo " "; ?>Inventory</h1> -->
+            <button type="button" form="none" class="btn btn-primary ml-4   " data-toggle="modal" data-target="#exampleModal">
                 Add Item
             </button>
             <div class="mt-5 container-fluid">
@@ -185,6 +184,6 @@ if ($_SESSION["userlevelid"] == 1) {
 
 function hidemenu1($menuname)
 {
-    echo "<script> document.getElementById('" . $menuname . "').style.display = 'none'; </script>";
+    echo "<script> document.getElementById('". $menuname ."').style.display = 'none'; </script>";
 }
 ?>

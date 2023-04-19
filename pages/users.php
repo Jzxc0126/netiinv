@@ -24,7 +24,7 @@
                         <div class="card-body">
                                 <div class="table-responsive">
                           
-                                        <table class="table table-bordered text-center" id="tblusers" width="100%" cellspacing="0">
+                                        <table class="table table-bordered border-primary table-hover text-center" id="tblusers" width="100%" cellspacing="0">
                                                 <thead class="bg-primary">
                                                         <tr>
                                                                 <th>Name</th>
@@ -129,7 +129,7 @@
                                 <option value="" disabled selected>Select Department</option>
           <?php populateselectdepartment()?>
           </select>
-                                        <table class="table table-bordered text-center" id="dataTable1" width="100%" cellspacing="0">
+                                        <table class="table table-bordered border-primary table-hover text-center" id="dataTable1" width="100%" cellspacing="0">
                                         
                                                 <thead class="bg-primary">
                                                         <tr>
@@ -225,7 +225,7 @@
                         </div>
                         <div class="card-body">
                                 <div class="table-responsive">
-                                        <table class="table table-bordered text-center" id="tblviewers" width="100%" cellspacing="0">
+                                        <table class="table table-bordered border-primary table-hover text-center" id="tblviewers" width="100%" cellspacing="0">
                                                 <thead class="bg-primary">
                                                         <tr>
                                                                 <th>Name</th>
