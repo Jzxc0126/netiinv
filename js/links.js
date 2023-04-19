@@ -48,7 +48,7 @@ function urltoassetusage()
 // }
 function urltoconsumable()
 {
-    window.location.replace('/netiinv/modules/pages/consumableassets.php');
+    window.location.replace('/netiinv/pages/addinventory.php');
 }
 function urltomyprofile()
 {

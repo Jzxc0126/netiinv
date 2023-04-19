@@ -18,7 +18,6 @@
 <link href="../sbadmintemplate2/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="../sbadmintemplate2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 <script src="../sbadmintemplate2/vendor/jquery/jquery.min.js"></script>

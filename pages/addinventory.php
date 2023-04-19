@@ -14,6 +14,9 @@ include 'addinventoryclass.php';
         border-color: white;
         border-style: inset;
     }
+    body{
+        background-image: url(../img/Under-Maintenance.jpeg);
+    }
 </style>
 
 <body>
@@ -21,9 +24,9 @@ include 'addinventoryclass.php';
     <?php include '../includes/navbar.php'; ?>
     <div class="container-fluid">
         <span class="glyphicon glyphicon-dashboard"></span>
-        <h1>Add Inventory</h1>
+        <h1>Consumable Asset</h1>
     </div>
-
+    
 
 
     <!--MAIN PANEL-->
@@ -32,12 +35,15 @@ include 'addinventoryclass.php';
                                 } else {
                                     echo "";
                                 } ?>">
+<div class="container-fluid d-flex justify-content-center mt-5 ">
+        <span class="glyphicon glyphicon-dashboard"></span>
+       <img src="../img/Under-Maintenance.jpeg" alt="">
+    </div>
 
 
-
-        <button type="button" form="none" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <!-- <button type="button" form="none" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Add Item
-        </button>
+        </button> -->
 
 
         <!-- ADD ITEM MODAL -->

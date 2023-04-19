@@ -24,8 +24,8 @@
                         <div class="card-body">
                                 <div class="table-responsive">
                           
-                                        <table class="table table-bordered" id="tblusers" width="100%" cellspacing="0">
-                                                <thead>
+                                        <table class="table table-bordered text-center" id="tblusers" width="100%" cellspacing="0">
+                                                <thead class="bg-primary">
                                                         <tr>
                                                                 <th>Name</th>
                                                                 <th>Username</th>
@@ -129,9 +129,9 @@
                                 <option value="" disabled selected>Select Department</option>
           <?php populateselectdepartment()?>
           </select>
-                                        <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                                        <table class="table table-bordered text-center" id="dataTable1" width="100%" cellspacing="0">
                                         
-                                                <thead>
+                                                <thead class="bg-primary">
                                                         <tr>
                                                                 <th>Name</th>
                                                                 <th>Username</th>
@@ -225,8 +225,8 @@
                         </div>
                         <div class="card-body">
                                 <div class="table-responsive">
-                                        <table class="table table-bordered" id="tblviewers" width="100%" cellspacing="0">
-                                                <thead>
+                                        <table class="table table-bordered text-center" id="tblviewers" width="100%" cellspacing="0">
+                                                <thead class="bg-primary">
                                                         <tr>
                                                                 <th>Name</th>
                                                                 <th>Username</th>

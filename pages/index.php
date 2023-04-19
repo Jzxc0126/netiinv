@@ -21,6 +21,10 @@ if (isset($_SESSION['userid'])) {
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+
+
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 	.bg{
@@ -50,17 +54,16 @@ width:450px;
 </head>
 <body class="bg">
 	<img class="wave" src="../img/wave.png">
+	
 	<div class="container">
-		<div class="img">
-			<img src="../img/bg.svg">
-		</div>
+	
 		<div class="login-content">
 			<div class="logincard">
 			<img src="../img/neti.png">
 			
 		<form  method="POST" action="../includes/sessiontest.php" >
-				<h2>Welcome</h2>
-				<h5>NETI Inventory and Asset Management System</h5>
+				<h5>Welcome</h5>
+				<h3>NETI Inventory and Asset Management System</h3>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -83,9 +86,10 @@ width:450px;
             	<input type="submit" name="btnLogin" class="btn" value="Login">
 				
             </form>
+			
 			</div>
         </div>
-		
+	
     </div>
     <script type="text/javascript" src="../js/main.js"></script>
 </body>

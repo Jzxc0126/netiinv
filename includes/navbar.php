@@ -150,7 +150,7 @@ background-size: cover;
 
                 <nav class="navbar navbar-expand navbar-light mb-1 topbar static-top shadow" id="topnav" >
                    <div class="container-fluid">
-                   <h3 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">NETI Inventory and Assets Management System</h3>
+                   <h3 style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Inventory and Assets Management System</h3>
 
                    </div> 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -229,8 +229,8 @@ background-size: cover;
 
         document.cookie = "cookieName=1";
         window.location.reload();
-    // window.location.replace('/netiinv/pages/inventory.php');
-     window.location.replace('/netiinv/pages/addinventory.php');
+    window.location.replace('/netiinv/pages/inventory.php');
+    // window.location.replace('/netiinv/pages/addinventory.php');
      
 
     }
