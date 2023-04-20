@@ -27,6 +27,7 @@
 <script src="../sbadmintemplate2/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../sbadmintemplate2/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../sbadmintemplate2/js/demo/datatables-demo.js"></script>
+
 <!-- Bootstrap End-->
 
 

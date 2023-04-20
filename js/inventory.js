@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    $('#tblinventory tbody tr').click(function() {
+        // retrieve animal data from server
+        var id = $(this).attr('id');
+        $.get('itemdetails.php', {id: id}, function(data) {
+                // display modal with animal details
+                $('#animalModal .modal-body').html(data);
+                $('#animalModal').modal('show');
+        });
+    });
     // Setup - add a text input to each footer cell
     $('#tblinventory thead tr')
         .clone(true)
@@ -59,4 +68,4 @@ $(document).ready(function () {
         },
     });
   });
-  
+

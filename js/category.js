@@ -1,29 +1,4 @@
 
- //category filter 
-// $(document).ready(function(){
-
-
-//     $("#fltrselectdepartment").change(function(){
-//            var depid =  $("#fltrselectdepartment").val();
-          
-//            $.post("categorysearchbydepartment.php" , {
-//             depid:depid
-//            },function(data){
-//              $("#dataTable3").html(data);
-//            });
-//     });
-    
-//     $('#dataTable3').DataTable( {
-//       dom: 'Bfrtip',
-//       'scrollY': 450,
-//       'scrollX': true,
-//       buttons: [
-//       ]
-//     } );
-  
-//   });
-
-
 $(document).ready(function () {
   // Setup - add a text input to each footer cell
   $('#example thead tr')
