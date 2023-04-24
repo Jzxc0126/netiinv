@@ -4,6 +4,8 @@
 
 <head>
     <?php include 'head.php'; ?>
+ 
+
 </head>
 <style>
     .btn-group-vertical {
@@ -229,26 +231,37 @@
                                                                                 <input type="text" class="inputfield form-control" name="txtbrandname" placeholder="Enter Brand" value=" ">
                                                                       </div>
                                                             </div>
-                                                            
-                                                            <div class="col-md-12 mt-1">
+                                                            <div class="col-md-12 mt-1" id="divdepartment">
                                                                       <div class="input-group">
                                                                                 <div class="input-group-prepend">
-                                                                                          <span class="inputfield input-group-text" style="width:136px;">Category</span>
+                                                                                          <span class="inputfield input-group-text" style="width:136px;">Department</span>
                                                                                 </div>
-                                                                                <select class="inputfield form-control" name="selectcategory" id="selectcategory" required>
-                                                                                <option value="Select Category" selected disabled>Select Category</option>
-                                                                                <?php populateselectcategory($userdeptid); ?>
-                                                                                <option class="btn btn-secondary" value="clickcategory">--CLICK ME TO ADD NEW CATEGORY!--</option>
+                                                                                <select class="inputfield form-control" name="selectdepartment" id="selectdepartment" required>
+                                                                                <option value="Select Department" selected disabled>Select Department</option>
+                                                                                <?php populateselectdepartment(); ?>
                                                                                 </select>
                                                                       </div>
                                                             </div>
                                                             <div class="col-md-12 mt-1">
                                                                       <div class="input-group">
                                                                                 <div class="input-group-prepend">
+                                                                                          <span class="inputfield input-group-text" style="width:136px;">Category</span>
+                                                                                </div>
+                                                                                <select class="inputfield form-control select2" name="selectcategoryinadd" id="selectcategoryinadd" required>
+                                                                                <option value="" selected disabled>Select Category</option>
+                                                                                <?php populateselectcategory($userdeptid); ?>
+                                                                                <option class="btn btn-secondary" value="clickcategory">--CLICK ME TO ADD NEW CATEGORY!--</option>
+                                                                                </select>
+                                                                      </div>
+                                                            </div>
+                                                           
+                                                            <div class="col-md-12 mt-1">
+                                                                      <div class="input-group">
+                                                                                <div class="input-group-prepend">
                                                                                           <span class="inputfield input-group-text" style="width:136px;">Asset Usage</span>
                                                                                 </div>
                                                                                 <select class="inputfield form-control" data-live-search="true" name="selectassetusage" id="selectassetusage" required>
-                                                                                <option value="Select Usage" selected disabled>Select Usage</option>
+                                                                                <option value="" selected disabled>Select Usage</option>
                                                                                 <?php populateassetusage($userdeptid); ?>
                                                                                 <option class="btn btn-secondary" value="clickassetusage">--CLICK ME TO ADD NEW ASSET USAGE!--</option>
                                                                                 </select>
@@ -258,10 +271,22 @@
                                                             <div class="col-md-12 mt-1">
                                                                       <div class="input-group">
                                                                                 <div class="input-group-prepend">
+                                                                                          <span class="inputfield input-group-text" style="width:136px;">Location</span>
+                                                                                </div>
+                                                                                <select class="inputfield form-control select2" name="selectlocationinadd" id="selectlocationinadd" required>
+                                                                                <option value="" selected disabled>Select Location</option>
+                                                                                <?php populateselectlocation($userdeptid); ?>
+                                                                                <option class="btn btn-secondary" value="clicklocation">--CLICK ME TO ADD NEW location!--</option>
+                                                                                </select>
+                                                                      </div>
+                                                            </div>
+                                                            <div class="col-md-12 mt-1">
+                                                                      <div class="input-group">
+                                                                                <div class="input-group-prepend">
                                                                                           <span class="inputfield input-group-text" style="width:136px;">Supplier</span>
                                                                                 </div>
                                                                                 <select class="inputfield form-control" name="selectsupplier" id="selectsupplier" required>
-                                                                                <option value="Select Supplier" selected disabled>Select Supplier</option>
+                                                                                <option value="" selected disabled>Select Supplier</option>
                                                                                 <?php populateselectsupplier($userdeptid); ?>
                                                                                 <option class="btn btn-secondary" value="clicksupplier">--CLICK ME TO ADD NEW SUPPLIER!--</option>
                                                                                 </select>
@@ -276,17 +301,7 @@
                                                                       </div>
                                                             </div>
                                                             
-                                                            <div class="col-md-12 mt-1" id="divdepartment">
-                                                                      <div class="input-group">
-                                                                                <div class="input-group-prepend">
-                                                                                          <span class="inputfield input-group-text" style="width:136px;">Department</span>
-                                                                                </div>
-                                                                                <select class="inputfield form-control" name="selectdepartment" id="selectdepartment" required>
-                                                                                <option value="Select Department" selected disabled>Select Department</option>
-                                                                                <?php populateselectdepartment(); ?>
-                                                                                </select>
-                                                                      </div>
-                                                            </div>
+                                                          
                                                             <!--<div class="col-md-6">
                                                                       <label>Item Group</label>
                                                                       <select class="form-control" name="selectitemgroup" id="selectitemgroup">
@@ -345,17 +360,16 @@
                           </div>
                         </div>
                         <!-- ADD ITEM MODAL -->
+                        <?php include '../includes/footer.php'; ?>
 </body>
 
 
 
 
-<?php include '../includes/footer.php'; ?>
+
 <script src="../js/inventory.js" type="text/javascript"></script>
-</body>
 
 </html>
-
 <?php
 if ($_SESSION["userlevelid"] == 1) {
     hidemenu1("catbtndpt");
@@ -378,6 +392,7 @@ if(isset($_POST["btnadditem"]))
 {
   $itemcode = strtoupper($_POST["txtitemcode"]);
   $itemname = $_POST["txtitemname"];
+  $brand = $_POST["txtbrandname"];
   if($userlevelid == 2 || $userlevelid == 3)
   {
     $departmentid = $userdeptid;
@@ -387,23 +402,18 @@ if(isset($_POST["btnadditem"]))
     $departmentid = $_POST["selectdepartment"];
   }
 
-  $categoryid = $_POST["selectcategory"];
+  $categoryid = $_POST["selectcategoryinadd"];
   $supplierid = $_POST["selectsupplier"];
+  $location = $_POST["selectlocationinadd"];
   $assetusageid = $_POST["selectassetusage"];
-  $consumabletypeid = $_POST["selectconsumable"];
-  $daysremaining = $_POST["txtdaysremaining"];
+
   $unitid  = $_POST["selectunit"];
   $quantity = $_POST["txtquantity"];
   $datepurchased = $_POST["txtdatepurchased"];
-  $brand = $_POST["txtbrandname"];
-  if($departmentid == "4")
-  {
-   
-  }
-  else
-  {
-    
-  }
+  
+  
+  addinventory($itemcode , $itemname , $brand, $departmentid , $categoryid  , $supplierid , $location ,
+  $assetusageid, $unitid , $quantity , $datepurchased );
 
 }
 ?>

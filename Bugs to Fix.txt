@@ -1,3 +1,9 @@
+GIT Code
+git add . && git commit -m "comment" && git push
+
+
+
+-Admin Add Item Dependent Drop Down List(working)
 -Edit button not functioning in item is in more than 10
 -Proper Validation , Excessive use of alert<>
 -Editing required to enter department everty time

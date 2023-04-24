@@ -256,7 +256,7 @@ function populatetableinventory($userlevelid , $userdeptid , $editid , $deleteid
 function addinventory($itemcode , $itemname , $departmentid , $categoryid  , $supplierid ,
                       $assetusageid, $consumabletypeid , $daysremaining , $unitid , $quantity , $datepurchased , $brand ,$userdeptid)
 {
-      $originalquantity = $quantity;
+      
       //procedure for checking property code
       include '../includes/dbcon.php';
       $statement = $conn->prepare("Select COUNT(itemcode) from inventory_tbl where itemcode LIKE '%".$itemcode."%' ");
@@ -278,20 +278,7 @@ function addinventory($itemcode , $itemname , $departmentid , $categoryid  , $su
       }
       //procedure for checking property code end
 
-      //switch location and specific location
-      switch ($userdeptid)
-      {
-        case '1': $locid = 70 ; $specloc = 328; break;
-        case '2': $locid = 71 ; $specloc = 329; break;
-        case '3': $locid = 72 ; $specloc = 330; break;
-        case '4': $locid = 1 ; $specloc = 1; break;
-        case '5': $locid = 73 ; $specloc = 331; break;
-        case '6': $locid = 74 ; $specloc = 332; break;
-        case '7': $locid = 75 ; $specloc = 333; break;
-        case '8': $locid = 76 ; $specloc = 334; break;
-        case '9': $locid = 78 ; $specloc = 339; break;
-      }
-      //switch location and specific location
+      
 
 
               //adding of item
@@ -300,7 +287,7 @@ function addinventory($itemcode , $itemname , $departmentid , $categoryid  , $su
                   if(strlen($codecount) == 1){ $newcodecount = "00".$codecount; }
                   else if(strlen($codecount) == 2){ $newcodecount = "0".$codecount; }
                   else if(strlen($codecount) == 3){ $newcodecount = $codecount; }
-                  $statement2 = $conn->prepare("insert into inventory_tbl(itemid,itemcode,itemname,departmentid,categoryid,supplierid,
+                  $statement2 = $conn->prepare("insert into inventory_tbl(itemid,itemcode,itemname,brand,departmentid,categoryid,supplierid,
                                                 assetusageid,consumabletypeid,daysremaining,unitid,locationid,specificlocationid,assetstatusid,datepurchased,brand,piece) values (NULL,?,?,?,?,?,?,?,?,?,".$locid.",".$specloc.",1,?,?,1)");
                   $statement2->bind_param("ssiiiiiiiss" , $Itemcodee , $Itemname, $Departmentid , $Categoryid  , $Supplierid , $Assetusageid,
                                           $Consumabletypeid , $Daysremaining , $Unitid , $Datepurchased , $Brand);
@@ -326,76 +313,7 @@ function addinventory($itemcode , $itemname , $departmentid , $categoryid  , $su
       //filter for adding  unit end
 
 
-}
 
-function addinventoryunitcontroller($itemcode , $itemname , $departmentid , $categoryid  , $supplierid ,
-                      $assetusageid, $consumabletypeid , $daysremaining , $unitid , $quantity , $datepurchased , $brand ,$userdeptid)
-{
-      $originalquantity = $quantity;
-      //procedure for checking property code
-      include '../includes/dbcon.php';
-      $statement = $conn->prepare("Select COUNT(itemcode) from inventory_tbl where itemcode LIKE '%".$itemcode."%' ");
-      $statement->execute();
-      $result = $statement->get_result();
-      $num_rows = mysqli_num_rows($result);
-      while ($row = $result->fetch_assoc())
-      {
-        $count = $row["COUNT(itemcode)"];
-        if($count == 0)
-        {
-          $codecount = 1;
-          echo $codecount;
-        }
-        else
-        {
-          $codecount = $count + 1;
-          echo $codecount;
-        }
-      }
-      //procedure for checking property code end
-
-      //switch location and specific location
-      switch ($userdeptid)
-      {
-        case '1': $locid = 70 ; $specloc = 328; break;
-        case '2': $locid = 71 ; $specloc = 329; break;
-        case '3': $locid = 72 ; $specloc = 330; break;
-        case '4': $locid = 1 ; $specloc = 1; break;
-        case '5': $locid = 73 ; $specloc = 331; break;
-        case '6': $locid = 74 ; $specloc = 332; break;
-        case '7': $locid = 75 ; $specloc = 333; break;
-        case '8': $locid = 76 ; $specloc = 334; break;
-        case '9': $locid = 78 ; $specloc = 339; break;
-      }
-      //switch location and specific location
-
-
-              //adding of item
-                  if(strlen($codecount) == 1){ $newcodecount = "00".$codecount; }
-                  else if(strlen($codecount) == 2){ $newcodecount = "0".$codecount; }
-                  else if(strlen($codecount) == 3){ $newcodecount = $codecount; }
-                  $statement2 = $conn->prepare("insert into inventory_tbl(itemid,itemcode,itemname,departmentid,categoryid,supplierid,
-                                                assetusageid,consumabletypeid,daysremaining,unitid,locationid,specificlocationid,assetstatusid,datepurchased,brand,piece) values (NULL,?,?,?,?,?,?,?,?,?,".$locid.",".$specloc.",1,?,?,'".$originalquantity."')");
-                  $statement2->bind_param("ssiiiiiiiss" , $Itemcodee , $Itemname, $Departmentid , $Categoryid  , $Supplierid , $Assetusageid,
-                                          $Consumabletypeid , $Daysremaining , $Unitid , $Datepurchased , $Brand);
-
-                  $Itemcodee = $itemcode."-".$newcodecount;
-                  $Itemname = $itemname;
-                  $Departmentid = $departmentid;
-                  $Categoryid = $categoryid;
-                  $Supplierid = $supplierid;
-                  $Assetusageid = $assetusageid;
-                  $Consumabletypeid = $consumabletypeid;
-                  $Daysremaining = $daysremaining;
-                  $Unitid = $unitid;
-                  $Datepurchased = $datepurchased;
-                  $Brand = $brand;
-                  $statement2->execute();
-              //adding of item end
-
-              $conn->close();
-              echo "<script> window.location.replace('addinventory.php'); </script>";
-      //filter for adding  unit end
 
 
 }

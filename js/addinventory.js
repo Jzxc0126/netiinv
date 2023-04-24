@@ -1,17 +1,5 @@
 $(document).ready(function(){
 
-
-    $("#selectdepartment").change(function(){
-      var deptid = $("#selectdepartment").val();
-      $.post("addinventoryselectcategoryperdeptclass.php",{
-        deptid:deptid
-      },function(data){
-        $("#selectcategory").html(data);
-      });
-    });
-
-
-
     $("#selectcategory").change(function(){
       var value = $("#selectcategory").val();
       if(value == "click")
@@ -47,14 +35,7 @@ $(document).ready(function(){
 
       }
     });
-    $("#selectdepartment").change(function(){
-      var deptid = $("#selectdepartment").val();
-      $.post("addinventoryselectsupplierperdepartment.php",{
-        deptid:deptid
-      },function(data){
-        $("#selectsupplier").html(data);
-      });
-    });
+    
 
     $('#daysremaining').hide();
     $("#selectconsumable").change(function(){

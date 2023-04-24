@@ -67,5 +67,63 @@ $(document).ready(function () {
                 });
         },
     });
+
+
+
+
+    $("#selectcategoryinadd").change(function(){
+        var value = $("#selectcategoryinadd").val();
+        if(value == "clickcategory")
+        {
+            window.location.replace("/netiinv/pages/category.php");
+        }
+        else
+        {
+  
+        }
+      });
+  
+      $("#selectlocationinadd").change(function(){
+        var value = $("#selectlocationinadd").val();
+        if(value == "clicklocation")
+        {
+            window.location.replace("/netiinv/pages/location.php");
+        }
+        else
+        {
+  
+        }
+      });
+      $("#selectsupplier").change(function(){
+        var value = $("#selectsupplier").val();
+        if(value == "clicksupplier")
+        {
+            window.location.replace("/netiinv/pages/supplier.php");
+        }
+        else
+        {
+  
+        }
+      });
+  
+      $("#selectassetusage").change(function(){
+        var value = $("#selectassetusage").val();
+        if(value == "clickassetusage")
+        {
+            window.location.replace("/netiinv/pages/assetusage.php");
+        }
+        else
+        {
+  
+        }
+      });
   });
+  function getCity(val){
+    $ajax({
+        type: "POST",
+        url: "getCity.php",
+        
+    
+    });
+  }
 
