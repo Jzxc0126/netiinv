@@ -35,14 +35,14 @@ $result3 = $statement3->get_result();
                                   while ($row = $result->fetch_assoc()) {
                                     $brandname = $row["brand"];
 
-                                    $statement2 = $conn->prepare("Select sum(piece),a.categoryid,a.departmentid,a.brand,
+                                    $statement2 = $conn->prepare("Select COUNT(itemcode),a.categoryid,a.departmentid,a.brand,
                                                             b.category
                                                             from inventory_tbl as a inner join category_tbl as b
                                                             on a.categoryid=b.categoryid where a.brand = '" . $brandname . "' and a.departmentid ='" .$userdeptid. "' ");
                                     $statement2->execute();
                                     $result2 = $statement2->get_result();
                                     if ($row2 = $result2->fetch_assoc()) {
-                                      $itemcount = $row2["sum(piece)"];
+                                      $itemcount = $row2["COUNT(itemcode)"];
                                     }
                                     $dataPoints[] = array("y" => $itemcount, "label" => $brandname);
                                     $label = "Brands";

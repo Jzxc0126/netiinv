@@ -15,7 +15,7 @@ function populatedashboard($userdeptid)
                     $departmentid = $row["departmentid"];
                     $department = $row["department"];
   
-                    $statement2 = $conn->prepare("Select sum(piece) from inventory_tbl where departmentid = ".$departmentid." ");
+                    $statement2 = $conn->prepare("Select COUNT(itemcode) from inventory_tbl where departmentid = ".$departmentid." ");
                     $statement2->execute();
                     $result2 = $statement2->get_result();
                     $num_rows = mysqli_num_rows($result2);
@@ -27,7 +27,7 @@ function populatedashboard($userdeptid)
                     {
                             if($row2 = $result2->fetch_assoc())
                             {
-                              $itemcount = $row2["sum(piece)"];
+                              $itemcount = $row2["COUNT(itemcode)"];
                            
                             }
                             else{
@@ -107,7 +107,7 @@ function populatedashboard($userdeptid)
                     $departmentid = $row["departmentid"];
                     $department = $row["department"];
   
-                    $statement2 = $conn->prepare("Select sum(piece) from inventory_tbl where departmentid = ".$departmentid." ");
+                    $statement2 = $conn->prepare("Select COUNT(itemcode) from inventory_tbl where departmentid = ".$departmentid." ");
                     $statement2->execute();
                     $result2 = $statement2->get_result();
                     $num_rows = mysqli_num_rows($result2);
@@ -119,7 +119,7 @@ function populatedashboard($userdeptid)
                     {
                             if($row2 = $result2->fetch_assoc())
                             {
-                              $itemcount = $row2["sum(piece)"];
+                              $itemcount = $row2["COUNT(itemcode)"];
                             }
                     }
                     $color = "#".substr(md5(rand()), 0, 6);
