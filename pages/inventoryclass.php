@@ -18,7 +18,7 @@ $assetusageid, $unitid , $quantity , $datepurchased )
    else
    {
      $codecount = $count;
-     $quantity = $quantity + 1;
+    //  $quantity = $quantity + 1;
    }
  }
 //adding of item
@@ -41,7 +41,7 @@ for ($x = 0; $x < $quantity; $x++)
     $Location = $location;
     $Assetusageid = $assetusageid;
     $Unitid = $unitid;
-    $Quantity = $quantity;
+    $Quantity = 1;
     $Datepurchased = $datepurchased;
     
     $statement2->execute();
@@ -125,6 +125,7 @@ function populateselectcategory($userdeptid)
   }
 
 }
+
 function populateselectlocation($userdeptid)
 {
   $query = "Select * from location_tbl where loc_deleted = 1 and departmentid = ?";
@@ -264,7 +265,7 @@ function populateselectunit()
 }
 function populateassetusage($userdeptid)
 {
-  $query = "Select * from assetussage_tbl where departmentid = ?";
+  $query = "Select * from assetusage_tbl where departmentid = ?";
   try
   {
     include '../includes/dbcon.php';

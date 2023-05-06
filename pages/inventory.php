@@ -226,7 +226,7 @@
                                         </div>
                                         <select class="inputfield form-control" data-live-search="true" name="selectassetusage" id="selectassetusage" required>
                                             <option value="" selected disabled>Select Usage</option>
-                                            <!-- ?php populateassetusage($userdeptid); ?> -->
+                                            <?php populateassetusage($userdeptid); ?>
                                             <option class="btn btn-secondary" value="clickassetusage">--CLICK ME TO ADD NEW ASSET USAGE!--</option>
                                         </select>
 
