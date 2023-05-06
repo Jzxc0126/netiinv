@@ -1,0 +1,50 @@
+.btn-group-vertical {
+    display: block;
+    /* overflow-x: auto; */
+    max-height: 600px;
+}
+
+.btn-group-vertical button {
+    background-color: royalblue;
+    /* Green background */
+    border: 1px solid green;
+    /* Green border */
+    color: white;
+    margin-left: 5px;
+    /* White text */
+    padding: 10px 24px;
+    /* Some padding */
+    cursor: pointer;
+    /* Pointer/hand icon */
+    width: 100%;
+    /* Set a width if needed */
+    display: block;
+    /* Make the buttons appear below each other */
+
+}
+
+.btn-group-vertical button:not(:last-child) {
+    border-bottom: none;
+    /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group-vertical button:hover {
+    background-color: maroon;
+}
+
+/* Horizontal */
+
+tbody {
+    background-color: whitesmoke;
+}
+
+thead input {
+    width: 100%;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f1f1f1;
+}

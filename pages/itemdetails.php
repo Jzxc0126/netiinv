@@ -16,7 +16,7 @@ try
      						 INNER join category_tbl as c on a.categoryid=c.categoryid
                              INNER JOIN supplier_tbl as g on a.supplierid=g.supplierid
                              INNER JOIN location_tbl as d on a.locationid=d.locationid
-                             INNER JOIN assetussage_tbl as e on a.assetusageid=e.assetusageid
+                             INNER JOIN assetusage_tbl as e on a.assetusageid=e.assetusageid
                              INNER JOIN consumabletype_tbl as f on a.consumabletypeid=f.consumabletypeid
      Where itemid = $itemid ";
     $query_run = mysqli_query($conn, $query);

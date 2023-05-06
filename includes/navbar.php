@@ -57,6 +57,12 @@ background-size: cover;
 	
 	
 	transition: .5s;
+    
+    }
+    thead {
+        position: sticky;
+        top: 0;
+        background-color: #f1f1f1;
     }
 </style>
 

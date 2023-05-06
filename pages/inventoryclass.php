@@ -83,25 +83,13 @@ function populatetblinventory($userdeptid)
                   echo "<td>".$row["category"]."</td>";
                   echo "<td>".$row["locationname"]."</td>";
                  echo '<td>
-                 <a type="button" class="btn btn-primary bg-gradient-primary" href="user_details.php?ids=' . $row['itemid'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
-               <div class="btn-group">
-                 <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">
-                 ... <span class="caret"></span></a>
-               <ul class="dropdown-menu text-center" role="menu">
-                   <li>
-                     <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 10px;" href="user_edit_details.php?ids=' . $row['itemid'] . '">
-                       <i class="fas fa-fw fa-edit"></i> Edit
-                     </a>
-                   </li>
-                   <li>
-                   <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="user_resetpass.php?ids=' . $row['itemid'] . '">
-                   <i class="fa-duotone fa-key-skeleton"></i>  <i class="fa-solid fa-lock fa-2xs"></i> Reset Password
-                   </a>
-                 </li>
-                   
-           
-               </ul>
-               </div>
+                 
+             
+               <a type="button" class="btn btn-primary bg-gradient-primary" href="edit_item_details.php?ids=' . $row['itemid'] . '"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                 <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="item_resetpass.php?ids=' . $row['itemid'] . '">
+                 <i class="fa-duotone fa-key-skeleton"></i>  <i class="fa-solid fa-trash fa-xs"></i> Delete
+                 </a>
+               
              </div></td>';
                   echo "</tr>";
                 }
