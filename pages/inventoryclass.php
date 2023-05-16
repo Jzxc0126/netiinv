@@ -1,4 +1,5 @@
 <?php
+
 function addinventory($itemcode , $itemname , $brand, $departmentid , $categoryid  , $supplierid , $location ,
 $assetusageid, $unitid , $quantity , $datepurchased )
 {
@@ -55,7 +56,7 @@ echo "<script> window.location.replace('inventory.php'); </script>";
 
 
 }
-function populatetblinventory($userdeptid)
+function populatetblinventory($userdeptid,$userlevelid)
 {
   $query = "SELECT a.itemid,a.itemcode,a.brand, a.itemname ,
   b.category,
@@ -64,7 +65,7 @@ function populatetblinventory($userdeptid)
               INNER JOIN location_tbl as c on a.locationid=c.locationid
   
   
-  where a.departmentid = ? and a.consumabletypeid = 1";
+  where a.departmentid = ? and a.consumabletypeid = 1 and  a.assetstatusid = 1";
   try
   {
     include '../includes/dbcon.php';
@@ -82,19 +83,20 @@ function populatetblinventory($userdeptid)
                   echo "<td>".$row["itemname"]."</td>";
                   echo "<td>".$row["category"]."</td>";
                   echo "<td>".$row["locationname"]."</td>";
-                 echo '<td>
                  
-             
-               <a type="button" class="btn btn-primary bg-gradient-primary" href="edit_item_details.php?ids=' . $row['itemid'] . '"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                 <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="item_resetpass.php?ids=' . $row['itemid'] . '">
-                 <i class="fa-duotone fa-key-skeleton"></i>  <i class="fa-solid fa-trash fa-xs"></i> Delete
-                 </a>
-               
-             </div></td>';
+                    echo '<td id="editid"'; if($userlevelid == 3)echo ' style="pointer-events: none" '; else echo '>
+                    <a type="button" class="btn btn-primary bg-gradient-primary"  href="inventoryedit.php?ids=' . $row['itemid'] . '"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+               </div></td>';
+                  
+                
+                  
                   echo "</tr>";
                 }
         $conn->close();
   }
+    //  <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 10px;margin-top:2px;" href="item_resetpass.php?ids=' . $row['itemid'] . '">
+                //  <i class="fa-duotone fa-key-skeleton"></i>  <i class="fa-solid fa-trash fa-xs"></i> Delete
+                //  </a>
   catch (\Exception $e)
   {
 
@@ -287,6 +289,48 @@ function populateassetusage($userdeptid)
 
   }
 
+}
+function populateselectstatus()
+{
+      try
+      {
+              include '../includes/dbcon.php';
+              $statement = $conn->prepare("Select * from assetstatus_tbl");
+              $statement->execute();
+              $result = $statement->get_result();
+                      while($row = $result->fetch_assoc())
+                      {
+                          echo "<option value='".$row["assetstatusid"]."'>".$row["assetstatus"]."</option>";
+                      }
+              $conn->close();
+      }
+      catch (\Exception $e)
+      {
+
+      }
+}
+
+function updateitem($itemid,$edititemname, $editbrand,$editdpt,$editcategory,$editassetusage,$editlocation,$editsupplier,$editstatus)
+{
+  $query = "UPDATE inventory_tbl set
+  itemname = ?, brand = ?, departmentid = ?, categoryid = ?, assetusageid = ?, locationid = ?, supplierid = ? , assetstatusid = ?
+ 
+  where itemid = $itemid";
+  include '..\includes\dbcon.php';
+  $statement = $conn->prepare($query);
+  $statement->bind_param("ssiiiiii" ,$Edititemname, $Editbrand, $Editdpt,$Editcategory,$Editassetusage,$Editlocation,$Editsupplier,$Editstatus);
+  $Edititemname = $edititemname;
+  $Editbrand = $editbrand;
+  $Editdpt = $editdpt;
+  $Editcategory = $editcategory;
+  $Editassetusage = $editassetusage;
+  $Editlocation = $editlocation;
+  $Editsupplier = $editsupplier;
+  $Editstatus = $editstatus;
+  $statement->execute();
+  $conn->close();
+  echo "<script> alert('Item Updated Succesfully'); </script>";
+  echo "<script> window.location.replace('inventory.php'); </script>";
 }
 
 ?>

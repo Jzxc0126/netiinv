@@ -48,9 +48,38 @@
             </button>
     </div> -->
     <div class="container-fluid">
+        
         <span class="glyphicon glyphicon-dashboard"></span>
         <h1><?php echo $dashlabel . " "; ?>Inventory</h1>
+        <div class="row">
+        <div class="col-md-2">
         <h4 class="m-2 font-weight-bold text-primary" id="additembutton">Add Item&nbsp;<a href="#" data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i class="fas fa-fw fa-plus"></i></a></h4>
+        </div>
+        <div class="col-md-3">
+        <form id="formexport" action="exportInventoryExcel.php" method="POST">
+                              
+
+                              <button type="submit" form="formexport" name="btnexportexcel" class="btn btn-success btn-icon-split" >
+                                <span class="icon text-white-50">
+                                  <i class="fa fa-file-excel"></i>
+                                </span>
+                                <span class="text">Export</span>
+                              </button>
+                        </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-3">
+        <select class="ml-2 form-control-sm" name="selectstatustosearch" id="selectstatustosearch" >
+                                
+          <?php populateselectstatus()?>
+          </select>
+        </div>
+        
+        </div>
+        
+        
     </div>
     <div class="row container-fluid">
         <div class="col<?php if ($userlevelid == 1) {
@@ -78,7 +107,7 @@
                             } ?>">
             <!-- <h1 id="dptlabel" name="dptlabel"><?php echo " "; ?>Inventory</h1> -->
 
-            <div class="mt-5 container-fluid">
+            <div class="mt-1 container-fluid">
                 <!-- <div class="btn-group" name="catbtndpt" id="catbtndpt" style="overflow-x :auto; max-width:1000px;">
                 ?php populatecategorybuttons($userdeptid); ?></div> -->
 
@@ -98,11 +127,11 @@
                             <th>Item Name</th>
                             <th>Category</th>
                             <th>Location</th>
-                            <th>Action</th>
+                            <th id="action">Action</th>
 
                         </thead>
                         <tbody id="tbodyinventory" style="cursor: pointer;">
-                            <?php populatetblinventory($userdeptid); ?>
+                            <?php populatetblinventory($userdeptid,$userlevelid); ?>
                         </tbody>
                     </table>
                 </div>
@@ -192,7 +221,7 @@
                                         <div class="input-group-prepend">
                                             <span class="inputfield input-group-text" style="width:136px;">Brand</span>
                                         </div>
-                                        <input type="text" class="inputfield form-control" name="txtbrandname" placeholder="Enter Brand" value=" ">
+                                        <input type="text" class="inputfield form-control" name="txtbrandname" placeholder="Enter Brand">
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-1" id="divdepartment">
@@ -345,6 +374,7 @@ if ($_SESSION["userlevelid"] == 1) {
     hidemenu1("dpttohide");
 } else if ($_SESSION["userlevelid"] == 3) {
     hidemenu1("additembutton");
+   
 }
 
 
@@ -389,3 +419,14 @@ if (isset($_POST["btnadditem"])) {
     );
 }
 ?>
+<script>
+      $("#selectstatustosearch").change(function(){
+        var depid =  $("#selectstatustosearch").val();
+       var depids = "<?php echo $userdeptid; ?>";
+        $.post("invsearchbystatus.php" , {
+         depid:depid , depids :depids
+        },function(data){
+          $("#tbodyinventory").html(data);
+        });
+ });
+</script>
