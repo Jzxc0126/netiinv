@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2023 at 04:57 AM
+-- Generation Time: May 08, 2023 at 02:49 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -52,51 +52,50 @@ INSERT INTO `assetstatus_tbl` (`assetstatusid`, `assetstatus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `assetussage_tbl`
+-- Table structure for table `assetusage_tbl`
 --
 
-CREATE TABLE `assetussage_tbl` (
+CREATE TABLE `assetusage_tbl` (
   `assetusageid` int(11) NOT NULL,
   `assetusage` varchar(250) NOT NULL,
-  `departmentid` int(11) NOT NULL
+  `departmentid` int(11) NOT NULL,
+  `usage_deleted` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `assetussage_tbl`
+-- Dumping data for table `assetusage_tbl`
 --
 
-INSERT INTO `assetussage_tbl` (`assetusageid`, `assetusage`, `departmentid`) VALUES
-(1, 'OFFICE WORK', 1),
-(2, 'MODULE DEVELOPER', 1),
-(3, 'TRAINING LAPTOP', 1),
-(4, 'EVENTS', 1),
-(5, 'TRAINING', 1),
-(6, 'SIGNAGE', 1),
-(7, 'COMMUNICATION', 1),
-(8, 'DORM USE', 1),
-(9, 'SAFETY', 1),
-(10, 'EVENTS', 1),
-(11, 'SECURITY', 1),
-(12, 'MONITORING', 1),
-(13, 'NETWORK SYSTEM', 1),
-(14, 'DATA CENTER', 1),
-(15, 'WIFI NETWORK SYSTEM', 1),
-(16, 'NETWORK SECURITY', 1),
-(17, 'FOR EVENT COVERAGE', 1),
-(18, 'FOR PHOTO TAKING', 1),
-(19, 'FOR PRESENTATION', 1),
-(20, 'FOR CONFERENCE MEETING', 1),
-(25, 'Training', 1),
-(26, 'cooking', 2),
-(27, 'Laundry User', 3),
-(28, ' NONE', 1),
-(29, 'NONE', 2),
-(30, 'Office Work', 1),
-(31, 'Cleaning Materials', 1),
-(34, 'Office Work', 2),
-(35, 'Office Supplies', 2),
-(37, 'Office Work', 2),
-(38, 'Training', 3);
+INSERT INTO `assetusage_tbl` (`assetusageid`, `assetusage`, `departmentid`, `usage_deleted`) VALUES
+(1, 'NONE', 1, 1),
+(2, 'OFFICE WORK', 1, 1),
+(3, 'TRAINING LAPTOP', 1, 1),
+(4, 'EVENTS', 1, 1),
+(5, 'TRAINING', 1, 1),
+(6, 'SIGNAGE', 1, 1),
+(7, 'COMMUNICATION', 1, 1),
+(8, 'DORM USE', 1, 1),
+(9, 'SAFETY', 1, 1),
+(10, 'EVENTS', 1, 1),
+(11, 'SECURITY', 1, 1),
+(12, 'MONITORING', 1, 1),
+(13, 'NETWORK SYSTEM', 1, 1),
+(14, 'DATA CENTER', 1, 1),
+(15, 'WIFI NETWORK SYSTEM', 1, 1),
+(16, 'NETWORK SECURITY', 1, 1),
+(17, 'FOR EVENT COVERAGE', 1, 1),
+(18, 'FOR PHOTO TAKING', 1, 1),
+(19, 'FOR PRESENTATION', 1, 1),
+(20, 'FOR CONFERENCE MEETING', 1, 1),
+(25, 'Training', 1, 1),
+(26, 'NONE', 2, 1),
+(27, 'Laundry User', 3, 1),
+(28, 'MODULE DEVELOPER', 1, 1),
+(29, 'COOKING', 2, 1),
+(35, 'Office Supplies', 2, 1),
+(37, 'Office Work', 2, 1),
+(38, 'Training', 3, 1),
+(39, 'NONE', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +168,8 @@ CREATE TABLE `department_tbl` (
 INSERT INTO `department_tbl` (`departmentid`, `department`, `dept_deleted`) VALUES
 (1, 'Network Operation Center', 1),
 (2, 'Galley Department', 1),
-(3, 'Dormitory Department', 1);
+(3, 'Dormitory Department', 1),
+(4, 'Engine Department', 1);
 
 -- --------------------------------------------------------
 
@@ -204,9 +204,59 @@ CREATE TABLE `inventory_tbl` (
 --
 
 INSERT INTO `inventory_tbl` (`itemid`, `itemcode`, `itemname`, `brand`, `serialnumber`, `macaddress`, `departmentid`, `categoryid`, `supplierid`, `locationid`, `specificlocationid`, `assetusageid`, `consumabletypeid`, `assetstatusid`, `unitid`, `piece`, `daysremaining`, `datepurchased`, `dateissued`) VALUES
-(1, 'LTOP-NTTC-001', 'Sample_X1 carbon G3', 'Lenovo', 'R9-Y0C33', '', 1, 1, 1, 125, 344, 1, 1, 1, 1, '1', 365, '2015 SEPTEMBER 23', '2015-09-23'),
-(2, 'LTOP-NTTC-143', 'Sample_Thinbook 15 Gen 2', 'Hp', '', '', 1, 1, 2, NULL, NULL, 1, 1, 1, 1, '1', 365, '', ''),
-(3, 'CBNT-FDC-001', 'Sample_Orocan', 'Loks', '', '', 2, 2, 3, NULL, NULL, 8, 1, 1, 1, '1', 0, '', '');
+(1, 'LTOP-NTTC-001', 'Sample_X1 carbon G3', 'Lenovo', 'R9-Y0C33', '', 1, 1, 1, 4, 344, 1, 1, 1, 1, '1', 365, '2015 SEPTEMBER 23', '2015-09-23'),
+(2, 'LTOP-NTTC-143', 'Sample_Thinbook 15 Gen 2', ' Hewlett-Packard', '', '', 1, 1, 2, 4, NULL, 1, 1, 1, 1, '1', 365, '', ''),
+(3, 'CBNT-FDC-001', 'Sample_Orocan', 'Loks', '', '', 2, 2, 3, 2, NULL, 8, 1, 1, 1, '1', 0, '', ''),
+(4, 'LTOP-NTTC-002', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-04-24', ''),
+(5, 'LTOP-NTTC-003', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-04-24', ''),
+(6, 'LTOP-NTTC-004', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(7, 'LTOP-NTTC-005', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(8, 'LTOP-NTTC-006', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(9, 'LTOP-NTTC-007', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(10, 'LTOP-NTTC-008', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(11, 'LTOP-NTTC-009', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 3, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(12, 'LTOP-NTTC-010', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(13, 'LTOP-NTTC-011', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(14, 'LTOP-NTTC-012', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(15, 'LTOP-NTTC-013', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(16, 'LTOP-NTTC-014', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(17, 'LTOP-NTTC-015', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '6', 0, '2023-04-04', ''),
+(18, 'LTOP-NTTC-016', 'Carbon G5', ' Lenovo', '', '', 1, 1, 4, 4, NULL, 3, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(19, 'LTOP-NTTC-017', 'Carbon G5', ' Lenovo', '', '', 1, 1, 4, 4, NULL, 3, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(20, 'LTOP-NTTC-018', 'Carbon G7', ' Lenovo', '', '', 1, 1, 1, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-29', ''),
+(21, 'LTOP-NTTC-019', 'Carbon G7', ' Lenovo', '', '', 1, 1, 1, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-29', ''),
+(22, 'LTOP-NTTC-020', 'Carbon G8', ' Lenovo', '', '', 1, 1, 3, 4, NULL, 5, 1, 1, 1, '2', 0, '2023-04-30', ''),
+(23, 'LTOP-NTTC-021', 'Carbon G8', ' Lenovo', '', '', 1, 1, 3, 4, NULL, 5, 1, 1, 1, '2', 0, '2023-04-30', ''),
+(24, 'LTOP-NTTC-022', 'Carbon G8', ' Lenovo', '', '', 1, 1, 1, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(25, 'LTOP-NTTC-023', 'Carbon G8', ' Lenovo', '', '', 1, 1, 1, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(26, 'LTOP-NTTC-024', 'Carbon G9', ' Lenovo', '', '', 1, 1, 4, 4, NULL, 2, 1, 1, 1, '3', 0, '2023-05-06', ''),
+(27, 'LTOP-NTTC-025', 'Carbon G9', ' Lenovo', '', '', 1, 1, 4, 4, NULL, 2, 1, 1, 1, '3', 0, '2023-05-06', ''),
+(28, 'LTOP-NTTC-026', 'Carbon G9', ' Lenovo', '', '', 1, 1, 4, 4, NULL, 2, 1, 1, 1, '3', 0, '2023-05-06', ''),
+(29, 'LTOP-NTTC-027', 'Carbon L1', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(30, 'LTOP-NTTC-028', 'Carbon L1', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(31, 'LTOP-NTTC-029', 'Carbon L1', ' Hewlett-Packard', '', '', 1, 1, 1, 4, NULL, 3, 1, 1, 1, '3', 0, '2023-05-05', ''),
+(32, 'LTOP-NTTC-030', 'Carbon L1', ' Hewlett-Packard', '', '', 1, 1, 1, 4, NULL, 3, 1, 1, 1, '3', 0, '2023-05-05', ''),
+(33, 'LTOP-NTTC-031', 'Carbon L1', ' Hewlett-Packard', '', '', 1, 1, 1, 4, NULL, 3, 1, 1, 1, '3', 0, '2023-05-05', ''),
+(34, 'DTOP-NTTC-001', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 1, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(35, 'DTOP-NTTC-002', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 1, NULL, 2, 1, 1, 1, '2', 0, '2023-05-06', ''),
+(36, 'DTOP-NTTC-002', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 4, 1, 1, NULL, 18, 1, 1, 1, '3', 0, '2023-05-25', ''),
+(37, 'DTOP-NTTC-003', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 4, 1, 1, NULL, 18, 1, 1, 1, '3', 0, '2023-05-25', ''),
+(38, 'DTOP-NTTC-004', 'Probook 440s', ' Hewlett-Packard', '', '', 1, 4, 1, 1, NULL, 18, 1, 1, 1, '3', 0, '2023-05-25', ''),
+(39, 'DTOP-NTTC-005', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '5', 0, '2023-05-13', ''),
+(40, 'DTOP-NTTC-006', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '5', 0, '2023-05-13', ''),
+(41, 'DTOP-NTTC-007', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '5', 0, '2023-05-13', ''),
+(42, 'DTOP-NTTC-008', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '5', 0, '2023-05-13', ''),
+(43, 'DTOP-NTTC-009', 'HP PRODESK 400 G7 MICROTOWER PC', ' Hewlett-Packard', '', '', 1, 1, 3, 4, NULL, 2, 1, 1, 1, '5', 0, '2023-05-13', ''),
+(44, 'MNTR-NTTC-001', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(45, 'MNTR-NTTC-002', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(46, 'MNTR-NTTC-003', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(47, 'MNTR-NTTC-004', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(48, 'MNTR-NTTC-005', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(49, 'MNTR-NTTC-006', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(50, 'MNTR-NTTC-007', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(51, 'MNTR-NTTC-008', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(52, 'MNTR-NTTC-009', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', ''),
+(53, 'MNTR-NTTC-010', 'LED24633R', 'ChangChong', '', '', 1, 1, 4, 1, NULL, 7, 1, 1, 1, '1', 0, '2023-05-06', '');
 
 -- --------------------------------------------------------
 
@@ -249,7 +299,7 @@ INSERT INTO `location_tbl` (`locationid`, `locationname`, `departmentid`, `loc_d
 (1, 'None', 1, 1),
 (2, 'None', 2, 1),
 (3, 'None', 3, 1),
-(4, 'NOC', 1, 0);
+(4, 'NOC', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -275,7 +325,7 @@ INSERT INTO `supplier_tbl` (`supplierid`, `supp_name`, `supp_number`, `supp_cont
 (1, 'Transnational E-Business Solutions, Inc.', '(0632)830-8888', 'Manong', 'The Penthouse, Net Quad Building, 4th Ave, corner 30th St. E-Square Crescent Park West Bonifacio Global City, Taguig City', 1, 1),
 (2, 'MegaKarte Smartcard Corp.', '(0632)753-1801', 'Manong 2', 'Room 1407 14/F Cityland 10 Tower II 154 H V Dela Costa St. Salcedo Village Makati City', 2, 1),
 (3, 'Fil-Nippon Technology Supply Inc.', '(0632)553-8390', 'Manong 3', 'Bay 9-11 UPRC I BLDG 2230 Chino Roces Ave Brgy. Bangkal, Makati City', 1, 1),
-(4, 'ISSI Information Technologies', 'NA', 'Manong 4', '#3B Speaker Perez St., Brgy Sta Teresita, Quezon City', 1, 0),
+(4, 'ISSI Information Technologies', 'NA', 'Manong 4', '#3B Speaker Perez St., Brgy Sta Teresita, Quezon City', 1, 1),
 (5, 'Palengke', '09077813929', 'Manang Inday', 'Palengke, Canlubang', 2, 1);
 
 -- --------------------------------------------------------
@@ -352,9 +402,9 @@ ALTER TABLE `assetstatus_tbl`
   ADD PRIMARY KEY (`assetstatusid`);
 
 --
--- Indexes for table `assetussage_tbl`
+-- Indexes for table `assetusage_tbl`
 --
-ALTER TABLE `assetussage_tbl`
+ALTER TABLE `assetusage_tbl`
   ADD PRIMARY KEY (`assetusageid`),
   ADD KEY `departmentid` (`departmentid`);
 
@@ -388,7 +438,8 @@ ALTER TABLE `inventory_tbl`
   ADD KEY `invtoasssetussage` (`assetusageid`),
   ADD KEY `invtodepartment` (`departmentid`),
   ADD KEY `invtocategory` (`categoryid`),
-  ADD KEY `supplierid` (`supplierid`);
+  ADD KEY `supplierid` (`supplierid`),
+  ADD KEY `locationid` (`locationid`);
 
 --
 -- Indexes for table `level_tbl`
@@ -434,10 +485,10 @@ ALTER TABLE `assetstatus_tbl`
   MODIFY `assetstatusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `assetussage_tbl`
+-- AUTO_INCREMENT for table `assetusage_tbl`
 --
-ALTER TABLE `assetussage_tbl`
-  MODIFY `assetusageid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+ALTER TABLE `assetusage_tbl`
+  MODIFY `assetusageid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `category_tbl`
@@ -455,13 +506,13 @@ ALTER TABLE `consumabletype_tbl`
 -- AUTO_INCREMENT for table `department_tbl`
 --
 ALTER TABLE `department_tbl`
-  MODIFY `departmentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `departmentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventory_tbl`
 --
 ALTER TABLE `inventory_tbl`
-  MODIFY `itemid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `itemid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `level_tbl`
@@ -498,10 +549,10 @@ ALTER TABLE `user_acc_tbl`
 --
 
 --
--- Constraints for table `assetussage_tbl`
+-- Constraints for table `assetusage_tbl`
 --
-ALTER TABLE `assetussage_tbl`
-  ADD CONSTRAINT `assetussage_tbl_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department_tbl` (`departmentid`);
+ALTER TABLE `assetusage_tbl`
+  ADD CONSTRAINT `assetusage_tbl_ibfk_1` FOREIGN KEY (`departmentid`) REFERENCES `department_tbl` (`departmentid`);
 
 --
 -- Constraints for table `category_tbl`
@@ -516,8 +567,9 @@ ALTER TABLE `inventory_tbl`
   ADD CONSTRAINT `inventory_tbl_ibfk_1` FOREIGN KEY (`consumabletypeid`) REFERENCES `consumabletype_tbl` (`consumabletypeid`) ON UPDATE CASCADE,
   ADD CONSTRAINT `inventory_tbl_ibfk_2` FOREIGN KEY (`unitid`) REFERENCES `unit_tbl` (`unitid`) ON UPDATE CASCADE,
   ADD CONSTRAINT `inventory_tbl_ibfk_3` FOREIGN KEY (`supplierid`) REFERENCES `supplier_tbl` (`supplierid`),
+  ADD CONSTRAINT `inventory_tbl_ibfk_4` FOREIGN KEY (`locationid`) REFERENCES `location_tbl` (`locationid`),
   ADD CONSTRAINT `invtoassetstatus` FOREIGN KEY (`assetstatusid`) REFERENCES `assetstatus_tbl` (`assetstatusid`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `invtoasssetussage` FOREIGN KEY (`assetusageid`) REFERENCES `assetussage_tbl` (`assetusageid`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invtoasssetussage` FOREIGN KEY (`assetusageid`) REFERENCES `assetusage_tbl` (`assetusageid`) ON UPDATE CASCADE,
   ADD CONSTRAINT `invtocategory` FOREIGN KEY (`categoryid`) REFERENCES `category_tbl` (`categoryid`),
   ADD CONSTRAINT `invtodepartment` FOREIGN KEY (`departmentid`) REFERENCES `department_tbl` (`departmentid`);
 
