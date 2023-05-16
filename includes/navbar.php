@@ -140,8 +140,15 @@ background-size: cover;
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            <div class="mb-0 ml-auto mr-auto mt-auto text-white">
+            <?php
+date_default_timezone_set('Asia/Manila');
+echo "<span style='color:white;font-weight:bold;'></span>". date('F j, Y g:i a  ');
+?>
+            </div>
+        
         </ul>
+  
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
