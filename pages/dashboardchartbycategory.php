@@ -78,7 +78,7 @@ $result3 = $statement3->get_result();
 <body>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <!--Chart Script-->
-<script src="/netiinv/canvasjs-2.2/canvasjs.min.js"></script>
+<script src="/netiinv/canvasjs-3.7.5/canvasjs.min.js"></script>
 <!--Chart Script End-->
 </body>
 </html>

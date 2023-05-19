@@ -41,9 +41,9 @@ while ($row = mysqli_fetch_array($result2)) {
     $status = $row['assetstatus'];
     $consumable = $row['consumable'];
 }
-$file_ids = $_GET['ids'];
+$u_ids = $_GET['ids'];
 
-$statement2 = $conn->prepare("SELECT fileid,filename from files_tbl where itemid = $file_ids");
+$statement2 = $conn->prepare("SELECT fileid,filename from files_tbl where itemid = $u_ids");
                     $statement2->execute();
                     $result2 = $statement2->get_result();
                     $num_rows = mysqli_num_rows($result2);
