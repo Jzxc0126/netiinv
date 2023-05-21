@@ -130,9 +130,10 @@ try
     $query_run2 = mysqli_query($conn, $query2);
     echo '<table id="tblfiles" class="table table-bordered border-primary table-hover text-center display" style="width:100%;">
     <tr class="bg-warning border-primary">
-        <th>id</th>
-        <th>link</th>
-        <th>file</th>
+        <th>Id</th>
+        <th>Assigned to</th>
+        <th>Link</th>
+        <th>Photo</th>
         
 
     </tr>';
@@ -144,7 +145,9 @@ try
     
 
       <tr>
+       
           <td>'. $row2['fileid'] .'</td>
+          <td>'. $row2['file_owner'] .'</td>
           <td><a href="../uploads/'. $row2['filename'] .'">'. $row2['filename'] .'</td>
           <td><img src="../uploads/'. $row2['filename'] .'" width=100px alt="'. $row2['filename'] .'"></td>
           

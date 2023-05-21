@@ -1,10 +1,11 @@
 <?php 
 include '..\includes\dbcon.php';
 $itemidss = $_GET["ids"];
+$borrower = $_POST['txtborrower'];
 $filename = $_FILES["choosefile"]["name"];
 $tempfile = $_FILES["choosefile"]["tmp_name"];
 $folder = "../uploads/".$filename;
-$sql = "INSERT INTO files_tbl (`fileid`, `itemid`, `filename`, `file_deleted`)VALUES(null,$itemidss,'$filename',1)";
+$sql = "INSERT INTO files_tbl (`fileid`, `itemid`, `filename`, `file_owner`,`file_deleted`)VALUES(null,$itemidss,'$filename','$borrower',1)";
 if($filename == "")
 {
     echo 

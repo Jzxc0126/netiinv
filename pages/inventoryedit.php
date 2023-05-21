@@ -256,27 +256,43 @@ if ($_SESSION["userlevelid"] == "1") {
                                                             </div> -->
 
                 </div>
+               
                 <input type="submit" class="mt-2 btn btn-primary btn-block" name="btnupdateitem" value="Update Item">
             </form>
 
         </div>
-        <div class="col-md-12 mt-1"  id="fileupload">
-                        <div class="input-group mb-1">
+        
+        
+        
+        <div class="col-md-12"  id="fileupload">
+        
+          
+                        
+        <h4>Laptop Aggrement/s</h4>
+                        <div class="input-group mb-1" >
                             <div class="input-group-prepend">
-                                <span class="inputfield input-group-text" style="width:120px;">Current File</span>
+                                <span class="inputfield input-group-text" style="width:170px;">Current Aggrement</span>
                             </div>
                             <a href="../uploads/<?php echo $filename ?>">
-                            <input type="text" class="inputfield form-control" name="txtcurrent" placeholder="txtcurrent" value="<?php echo $filename ?>" disabled>
+                            <input style="cursor:pointer;" type="text" class="inputfield form-control" name="txtcurrent" placeholder="txtcurrent" value="<?php echo $filename ?>" disabled></a>
                         </div>
-                        <form action="process2.php?ids=<?php echo $itemid ?>" method="post"  enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to Upload ?');">
-                  <input type="file" class="form-control" name="choosefile"  required>
                            
-                  <button type="submit" name="btn_img" class="btn btn-outline-success m-2">
-                            Upload
+                        
+                       
+                        <form action="process2.php?ids=<?php echo $itemid ?>" method="post"  enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to Upload ?');">
+                 
+                        
+                        
+                        <input type="text" class="form-control" name="txtborrower" placeholder="Enter Assigned Person"  required>
+                        <input type="file" class="form-control" name="choosefile"  required>
+                           
+                  <button type="submit" name="btn_img" class="btn btn-success m-2">
+                            Add New Aggrement
                         </button>
                  
 
                 </form>
+          
                     </div>
         
     </div>
